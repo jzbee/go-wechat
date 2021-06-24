@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/MwlLj/go-wechat"
-	"github.com/MwlLj/go-wechat/common"
-	"github.com/MwlLj/go-wechat/example/full/event"
-	"github.com/MwlLj/go-wechat/example/full/material"
-	"github.com/MwlLj/go-wechat/example/full/menu"
-	"github.com/MwlLj/go-wechat/example/full/message"
-	"github.com/MwlLj/go-wechat/example/full/sender"
-	"github.com/MwlLj/go-wechat/example/full/store"
-	"github.com/MwlLj/go-wechat/example/full/template"
-	"github.com/MwlLj/go-wechat/example/full/user"
+	"github.com/jzbee/go-wechat"
+	"github.com/jzbee/go-wechat/common"
+	"github.com/jzbee/go-wechat/example/full/event"
+	"github.com/jzbee/go-wechat/example/full/material"
+	"github.com/jzbee/go-wechat/example/full/menu"
+	"github.com/jzbee/go-wechat/example/full/message"
+	"github.com/jzbee/go-wechat/example/full/sender"
+	"github.com/jzbee/go-wechat/example/full/store"
+	"github.com/jzbee/go-wechat/example/full/template"
+	"github.com/jzbee/go-wechat/example/full/user"
 )
 
 var _ = fmt.Println

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/MwlLj/go-wechat/common"
-	"github.com/MwlLj/go-wechat/communicate"
+	"github.com/jzbee/go-wechat/common"
+	"github.com/jzbee/go-wechat/communicate"
 	"net/http"
 )
 

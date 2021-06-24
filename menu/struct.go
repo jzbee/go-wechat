@@ -1,7 +1,7 @@
 package menu
 
 import (
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat/common"
 )
 
 type CMenuData struct {

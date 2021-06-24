@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat/common"
 	"io/ioutil"
 	"net/http"
 	"time"

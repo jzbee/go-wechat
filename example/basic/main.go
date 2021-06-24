@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/MwlLj/go-wechat"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat"
+	"github.com/jzbee/go-wechat/common"
 )
 
 var _ = fmt.Println

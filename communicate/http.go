@@ -2,7 +2,7 @@ package communicate
 
 import (
 	"bytes"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat/common"
 	"io"
 	"io/ioutil"
 	"mime/multipart"

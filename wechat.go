@@ -1,8 +1,8 @@
 package wechat
 
 import (
-	"github.com/MwlLj/go-wechat/common"
-	"github.com/MwlLj/go-wechat/server"
+	"github.com/jzbee/go-wechat/common"
+	"github.com/jzbee/go-wechat/server"
 )
 
 type IWeChat interface {

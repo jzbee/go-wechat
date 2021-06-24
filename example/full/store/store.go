@@ -3,8 +3,8 @@ package store
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/MwlLj/go-wechat"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat"
+	"github.com/jzbee/go-wechat/common"
 )
 
 func CreateStoreTest(wc wechat.IWeChat) {

@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat/common"
 	"math/rand"
 	"reflect"
 	"regexp"

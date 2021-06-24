@@ -3,9 +3,9 @@ package sender
 import (
 	"encoding/json"
 	"errors"
-	"github.com/MwlLj/go-wechat/common"
-	"github.com/MwlLj/go-wechat/communicate"
-	"github.com/MwlLj/go-wechat/private"
+	"github.com/jzbee/go-wechat/common"
+	"github.com/jzbee/go-wechat/communicate"
+	"github.com/jzbee/go-wechat/private"
 	"net/http"
 )
 

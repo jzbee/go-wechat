@@ -2,7 +2,7 @@ package server
 
 import (
 	"encoding/xml"
-	"github.com/MwlLj/go-wechat/common"
+	"github.com/jzbee/go-wechat/common"
 )
 
 var (
