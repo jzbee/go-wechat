@@ -7,12 +7,12 @@ golang 微信公众号 sdk
 本项目只是在源码基础上做修改以及新功能
 
 # install
-go get https://github.com/jzbee/go-wechat
+` go get https://github.com/jzbee/go-wechat `
 
 # sample example
 
+```
 package main
-
 import (
 	"fmt"
 	"github.com/jzbee/go-wechat"
@@ -36,3 +36,4 @@ func main() {
 	}, nil)
 	wc.Loop()
 }
+```
