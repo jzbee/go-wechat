@@ -17,7 +17,7 @@ func main() {
 		Token:     "c0082b4d-b46f-4d67-b0eb-7a0d15dd5ef2",
 	}
 	wc := wechat.New(&info)
-	wc.RegisterMsgFunc(func(reply common.IReply, msg *common.CMessage, userData interface{}) error {
+	wc.RegisterMsgFunc(func(reply common.IReply, msg *common.CMessage, communicate common.CDataCommunicate, userData interface{}) error {
 		reply.SendMessage(msg)
 		return nil
 	}, nil)
