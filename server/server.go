@@ -86,7 +86,7 @@ func (this *CServer) parseResContent(body []byte, w http.ResponseWriter) (*commo
 
 func (this *CServer) handleCheck(w http.ResponseWriter, r *http.Request) error {
 	r.ParseForm()
-	if !this.validateUrl(w, r) {
+	if r.Form["signature"] != nil && r.Form["echostr"] != nil && !this.validateUrl(w, r) {
 		fmt.Fprint(w, "check invalid")
 		return errors.New("check invalid")
 	}
