@@ -686,7 +686,7 @@ type CCommoditySkuInfo struct {
 
 type CCommodityProductBaseDetail struct {
 	Text string `json:"text"`
-	Img  string `json:"img`
+	Img  string `json:"img"`
 }
 
 type CCommodityProductBase struct {
