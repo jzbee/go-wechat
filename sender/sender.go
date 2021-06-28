@@ -40,7 +40,7 @@ func (this *CSender) GroupSendByOpenIds(request *common.CGroupSendByOpenIdsReque
 		return nil, err
 	}
 	method := http.MethodPost
-	resBody, err := communicate.SendRequestWithToken(this.m_token, timeoutMS, &GroupSendByTagUrl, &method, nil, nil, b)
+	resBody, err := communicate.SendRequestWithToken(this.m_token, timeoutMS, &GroupSendByOpenIdsUrl, &method, nil, nil, b)
 	if err != nil {
 		return nil, err
 	}
