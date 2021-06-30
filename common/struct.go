@@ -384,7 +384,7 @@ type CStoreBaseInfo struct {
 	Introduction   string           `json:"introduction"`
 	OpenTime       string           `json:"open_time"`
 	AvgPrice       int              `json:"avg_price"`
-	AvailableState int              `json:"available_state'`
+	AvailableState int              `json:"available_state"`
 	UpdateStatus   int              `json:"update_status"`
 	PoiId          string           `json:"poi_id"`
 }
@@ -474,7 +474,7 @@ type CDeleteTagRequest struct {
 }
 
 type CGetTagUserListRequest struct {
-	TagId      int64  `json:tagid"`
+	TagId      int64  `json:"tagid"`
 	NextOpenid string `json:"next_openid"`
 }
 
