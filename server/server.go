@@ -4,6 +4,7 @@ import (
 	"crypto/sha1"
 	"errors"
 	"fmt"
+	"github.com/beego/beego/v2/adapter/grace"
 	"github.com/jzbee/go-wechat/common"
 	"github.com/jzbee/go-wechat/material"
 	"github.com/jzbee/go-wechat/menu"
@@ -18,9 +19,13 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"os/signal"
 	"sort"
 	"strconv"
 	"strings"
+	"syscall"
+	"time"
 )
 
 type CServer struct {
@@ -160,11 +165,26 @@ func (this *CServer) startListen(port int, u *string) {
 		host := strings.Join([]string{":", strconv.FormatInt(int64(port), 10)}, "")
 		mux := http.NewServeMux()
 		mux.HandleFunc(url, handler)
-		err := http.ListenAndServe(host, mux)
-		if err != nil {
-			fmt.Println(err)
+		// 支持热更新开始
+		server := grace.NewServer(host, mux)
+		server.Server.ReadTimeout = 10*time.Second
+		server.Server.WriteTimeout = 10*time.Second
+		server.Network = "tcp4"
+		if err := server.ListenAndServe(); err != nil {
+			fmt.Println("ListenAndServe: ", err, fmt.Sprintf("%d", os.Getpid()))
+			time.Sleep(100 * time.Microsecond)
 			this.m_exeChannel <- false
 		}
+		ch := make(chan os.Signal)
+		signal.Notify(ch,syscall.SIGINT,syscall.SIGTERM)
+		// 支持热更新结束
+		//fmt.Println("ch: ",<-ch)
+		this.m_exeChannel <- true
+		//err := http.ListenAndServe(host, mux)
+		//if err != nil {
+		//	fmt.Println(err)
+		//	this.m_exeChannel <- false
+		//}
 	}()
 }
 
