@@ -7,6 +7,8 @@ import (
 	"github.com/jzbee/go-wechat/communicate"
 	"github.com/jzbee/go-wechat/private"
 	"net/http"
+	"io"
+	"mime/multipart"
 )
 
 type CMaterial struct {
@@ -127,6 +129,29 @@ func (this *CMaterial) UploadImage(path *string, timeoutMS int64) (*common.CUplo
 	multi.Type = communicate.MultiDataTypeFile
 	multi.FormName = UploadImageFormname
 	multi.ValueOrFilename = *path
+	multis := make([]communicate.CMultiData, 1)
+	multis = append(multis, multi)
+	resBody, err := communicate.UploadFileWithToken(this.m_token, timeoutMS, &multis, &UploadImageUrl, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	response := common.CUploadImageResponse{}
+	err = json.Unmarshal(resBody, &response)
+	if err != nil {
+		return nil, err
+	}
+	if response.ErrCode != private.ErrorCodeSuccess {
+		return nil, errors.New(response.ErrMsg)
+	}
+	return &response, nil
+}
+
+func (this *CMaterial) UploadImageFlow(path *io.Reader,fh *multipart.FileHeader, timeoutMS int64) (*common.CUploadImageResponse, error) {
+	multi := communicate.CMultiData{}
+	multi.Type = communicate.MultiDataTypeFlow
+	multi.FormName = UploadImageFormname
+	multi.ValueOrFilename = fh.Filename
+	multi.ValueFlow = *path
 	multis := make([]communicate.CMultiData, 1)
 	multis = append(multis, multi)
 	resBody, err := communicate.UploadFileWithToken(this.m_token, timeoutMS, &multis, &UploadImageUrl, nil, nil)

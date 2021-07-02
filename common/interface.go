@@ -1,5 +1,10 @@
 package common
 
+import (
+	"io"
+	"mime/multipart"
+)
+
 type FuncMsgCallback func(reply IReply, msg *CMessage, communicate CDataCommunicate, userData interface{}) error
 type FuncEventCallback func(reply IReply, event *CEvent, communicate CDataCommunicate, userData interface{}) error
 
@@ -52,6 +57,7 @@ type IMaterial interface {
 	GetTmpHDMaterial(request *CGetTmpHDMaterialRequest, timeoutMS int64) (*CGetTmpHDMaterialResponse, error)
 	AddForeverImgTextMaterial(request *CAddForeverImgTextMaterialRequest, timeoutMS int64) (*CAddForeverImgTextMaterialResponse, error)
 	UploadImage(path *string, timeoutMS int64) (*CUploadImageResponse, error)
+	UploadImageFlow(path *io.Reader,fh *multipart.FileHeader, timeoutMS int64) (*CUploadImageResponse, error)
 	UploadVideo(request *CUploadVideoRequest, timeoutMS int64) (*CUploadVideoResponse, error)
 	AddForeverOtherMaterial(request *CAddForeverOtherMaterialRequest, timeoutMS int64) (*CAddForeverOtherMaterialResponse, error)
 	GetForeverMaterial(request *CGetForeverMaterialRequest, timeoutMS int64) (*CGetForeverMaterialResponse, error)

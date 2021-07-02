@@ -14,12 +14,14 @@ import (
 var (
 	MultiDataTypeFile string = "file"
 	MultiDataTypeText string = "text"
+	MultiDataTypeFlow string = "flow"
 )
 
 type CMultiData struct {
 	Type            string
 	FormName        string
 	ValueOrFilename string
+	ValueFlow io.Reader
 }
 
 func SendRequestWithToken(itoken common.IToken, timeoutMS int64, url *string, method *string, params *map[string]string, headers *map[string]string, payload []byte) (resBody []byte, e error) {
@@ -93,6 +95,12 @@ func SendMultiFormData(token []byte, multiData *[]CMultiData, targetUrl *string,
 			}
 			valueReader := bytes.NewReader([]byte(multi.ValueOrFilename))
 			_, err = io.Copy(valueWriter, valueReader)
+			if err != nil {
+				return nil, err
+			}
+		case MultiDataTypeFlow:
+			valueWriter, err := bodyWriter.CreateFormFile(multi.FormName, multi.ValueOrFilename)
+			_, err = io.Copy(valueWriter, multi.ValueFlow)
 			if err != nil {
 				return nil, err
 			}
